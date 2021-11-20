@@ -1,0 +1,1 @@
+./no_multiple_allign -src_path ./source_1000/ -query_file ./source_1000/source-document02165.txt -k 16
