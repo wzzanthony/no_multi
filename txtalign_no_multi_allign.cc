@@ -718,7 +718,7 @@ int main(int argc, char **argv)
 
     stop = chrono::high_resolution_clock::now();
     duration = chrono::duration_cast<chrono::microseconds>(stop - start);
-    cout << "source window generation time: " << duration.count() / 1000000.0 << "s" << endl;
+    cout << "source window generation time: " << K * duration.count() / 1000000.0 << "s" << endl;
     
     // build the prefix filter index
     start = chrono::high_resolution_clock::now(); 
@@ -744,8 +744,8 @@ int main(int argc, char **argv)
 
     stop = chrono::high_resolution_clock::now();
     duration = chrono::duration_cast<chrono::microseconds>(stop - start);
-    cout << "query window generation time: " << duration.count() / 1000000.0 << "s" << endl;
-    cout << "query cws size: " << query_cws.size() << endl;
+    cout << "query window generation time: " << K * duration.count() / 1000000.0 << "s" << endl;
+    cout << "query cws size: " << K * query_cws.size() << endl;
     cout << endl;
 
     unordered_map<uint64_t, pair<int, int>> gt;

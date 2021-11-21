@@ -1,252 +1,252 @@
 ./no_multiple_allign -src_path ./source_500/ -query_file ./source_500/source-document03260.txt -k 16 
 
-readfile time: 0.000937s
+readfile time: 0.000828s
 the doc size: 577
 finish preProcess
-source window generation time: 0.000518s
-query window generation time: 0.00017s
-query cws size: 577
+source window generation time: 0.008432s
+query window generation time: 0.001488s
+query cws size: 9232
 
 ./no_multiple_allign -src_path ./source_500/ -query_file ./source_500/source-document03260.txt -k 32 
 
-readfile time: 0.000791s
+readfile time: 0.000822s
 the doc size: 577
 finish preProcess
-source window generation time: 0.000468s
-query window generation time: 9.4e-05s
-query cws size: 577
+source window generation time: 0.016352s
+query window generation time: 0.002976s
+query cws size: 18464
 
 ./no_multiple_allign -src_path ./source_500/ -query_file ./source_500/source-document03260.txt -k 48 
 
-readfile time: 0.000761s
+readfile time: 0.000749s
 the doc size: 577
 finish preProcess
-source window generation time: 0.000465s
-query window generation time: 9.4e-05s
-query cws size: 577
+source window generation time: 0.02304s
+query window generation time: 0.004368s
+query cws size: 27696
 
 ./no_multiple_allign -src_path ./source_500/ -query_file ./source_500/source-document03260.txt -k 64 
 
-readfile time: 0.00077s
+readfile time: 0.000753s
 the doc size: 577
 finish preProcess
-source window generation time: 0.000469s
-query window generation time: 9.2e-05s
-query cws size: 577
+source window generation time: 0.030272s
+query window generation time: 0.005824s
+query cws size: 36928
 
 ./no_multiple_allign -src_path ./source_1000/ -query_file ./source_1000/source-document02165.txt -k 16 
 
-readfile time: 0.001178s
+readfile time: 0.001176s
 the doc size: 1333
 finish preProcess
-source window generation time: 0.000604s
-query window generation time: 0.000223s
-query cws size: 1333
+source window generation time: 0.009728s
+query window generation time: 0.003536s
+query cws size: 21328
 
 ./no_multiple_allign -src_path ./source_1000/ -query_file ./source_1000/source-document02165.txt -k 32 
 
-readfile time: 0.001168s
+readfile time: 0.00117s
 the doc size: 1333
 finish preProcess
-source window generation time: 0.000606s
-query window generation time: 0.000224s
-query cws size: 1333
+source window generation time: 0.019584s
+query window generation time: 0.007072s
+query cws size: 42656
 
 ./no_multiple_allign -src_path ./source_1000/ -query_file ./source_1000/source-document02165.txt -k 48 
 
-readfile time: 0.001262s
+readfile time: 0.001147s
 the doc size: 1333
 finish preProcess
-source window generation time: 0.000651s
-query window generation time: 0.000227s
-query cws size: 1333
+source window generation time: 0.02928s
+query window generation time: 0.010608s
+query cws size: 63984
 
 ./no_multiple_allign -src_path ./source_1000/ -query_file ./source_1000/source-document02165.txt -k 64 
 
-readfile time: 0.001301s
+readfile time: 0.001198s
 the doc size: 1333
 finish preProcess
-source window generation time: 0.00065s
-query window generation time: 0.000226s
-query cws size: 1333
+source window generation time: 0.040064s
+query window generation time: 0.014208s
+query cws size: 85312
 
 ./no_multiple_allign -src_path ./source_2000/ -query_file ./source_2000/source-document01411.txt -k 16 
 
-readfile time: 0.001688s
+readfile time: 0.001694s
 the doc size: 2229
 finish preProcess
-source window generation time: 0.000919s
-query window generation time: 0.000409s
-query cws size: 2229
+source window generation time: 0.013296s
+query window generation time: 0.006448s
+query cws size: 35664
 
 ./no_multiple_allign -src_path ./source_2000/ -query_file ./source_2000/source-document01411.txt -k 32 
 
-readfile time: 0.001751s
+readfile time: 0.00165s
 the doc size: 2229
 finish preProcess
-source window generation time: 0.000911s
-query window generation time: 0.000409s
-query cws size: 2229
+source window generation time: 0.027776s
+query window generation time: 0.012992s
+query cws size: 71328
 
 ./no_multiple_allign -src_path ./source_2000/ -query_file ./source_2000/source-document01411.txt -k 48 
 
-readfile time: 0.001687s
+readfile time: 0.001648s
 the doc size: 2229
 finish preProcess
-source window generation time: 0.00086s
-query window generation time: 0.000409s
-query cws size: 2229
+source window generation time: 0.039936s
+query window generation time: 0.019296s
+query cws size: 106992
 
 ./no_multiple_allign -src_path ./source_2000/ -query_file ./source_2000/source-document01411.txt -k 64 
 
-readfile time: 0.001776s
+readfile time: 0.001685s
 the doc size: 2229
 finish preProcess
-source window generation time: 0.0009s
-query window generation time: 0.00041s
-query cws size: 2229
+source window generation time: 0.054144s
+query window generation time: 0.025664s
+query cws size: 142656
 
 ./no_multiple_allign -src_path ./source_3000/ -query_file ./source_3000/source-document03082.txt -k 16 
 
-readfile time: 0.002291s
+readfile time: 0.002126s
 the doc size: 3083
 finish preProcess
-source window generation time: 0.000998s
-query window generation time: 0.000567s
-query cws size: 3083
+source window generation time: 0.0164s
+query window generation time: 0.008976s
+query cws size: 49328
 
 ./no_multiple_allign -src_path ./source_3000/ -query_file ./source_3000/source-document03082.txt -k 32 
 
-readfile time: 0.002219s
+readfile time: 0.002093s
 the doc size: 3083
 finish preProcess
-source window generation time: 0.001034s
-query window generation time: 0.000581s
-query cws size: 3083
+source window generation time: 0.032768s
+query window generation time: 0.018016s
+query cws size: 98656
 
 ./no_multiple_allign -src_path ./source_3000/ -query_file ./source_3000/source-document03082.txt -k 48 
 
-readfile time: 0.002072s
+readfile time: 0.002091s
 the doc size: 3083
 finish preProcess
-source window generation time: 0.001022s
-query window generation time: 0.000566s
-query cws size: 3083
+source window generation time: 0.049536s
+query window generation time: 0.027024s
+query cws size: 147984
 
 ./no_multiple_allign -src_path ./source_3000/ -query_file ./source_3000/source-document03082.txt -k 64 
 
-readfile time: 0.002083s
+readfile time: 0.002071s
 the doc size: 3083
 finish preProcess
-source window generation time: 0.001027s
-query window generation time: 0.000567s
-query cws size: 3083
+source window generation time: 0.067648s
+query window generation time: 0.03616s
+query cws size: 197312
 
 ./no_multiple_allign -src_path ./source_4000/ -query_file ./source_4000/source-document01786.txt -k 16 
 
-readfile time: 0.002719s
+readfile time: 0.002505s
 the doc size: 4215
 finish preProcess
-source window generation time: 0.001374s
-query window generation time: 0.000841s
-query cws size: 4215
+source window generation time: 0.021248s
+query window generation time: 0.013328s
+query cws size: 67440
 
 ./no_multiple_allign -src_path ./source_4000/ -query_file ./source_4000/source-document01786.txt -k 32 
 
-readfile time: 0.00248s
+readfile time: 0.002497s
 the doc size: 4215
 finish preProcess
-source window generation time: 0.001303s
-query window generation time: 0.000856s
-query cws size: 4215
+source window generation time: 0.041856s
+query window generation time: 0.0264s
+query cws size: 134880
 
 ./no_multiple_allign -src_path ./source_4000/ -query_file ./source_4000/source-document01786.txt -k 48 
 
-readfile time: 0.002514s
+readfile time: 0.002574s
 the doc size: 4215
 finish preProcess
-source window generation time: 0.001339s
-query window generation time: 0.000853s
-query cws size: 4215
+source window generation time: 0.066768s
+query window generation time: 0.040656s
+query cws size: 202320
 
 ./no_multiple_allign -src_path ./source_4000/ -query_file ./source_4000/source-document01786.txt -k 64 
 
-readfile time: 0.002615s
+readfile time: 0.002503s
 the doc size: 4215
 finish preProcess
-source window generation time: 0.001462s
-query window generation time: 0.000853s
-query cws size: 4215
+source window generation time: 0.084608s
+query window generation time: 0.052928s
+query cws size: 269760
 
 ./no_multiple_allign -src_path ./source_5000/ -query_file ./source_5000/source-document02582.txt -k 16 
 
-readfile time: 0.003139s
+readfile time: 0.002819s
 the doc size: 5068
 finish preProcess
-source window generation time: 0.00156s
-query window generation time: 0.001085s
-query cws size: 5068
+source window generation time: 0.024528s
+query window generation time: 0.017296s
+query cws size: 81088
 
 ./no_multiple_allign -src_path ./source_5000/ -query_file ./source_5000/source-document02582.txt -k 32 
 
-readfile time: 0.00299s
+readfile time: 0.002827s
 the doc size: 5068
 finish preProcess
-source window generation time: 0.001595s
-query window generation time: 0.001095s
-query cws size: 5068
+source window generation time: 0.049312s
+query window generation time: 0.0344s
+query cws size: 162176
 
 ./no_multiple_allign -src_path ./source_5000/ -query_file ./source_5000/source-document02582.txt -k 48 
 
-readfile time: 0.002902s
+readfile time: 0.002796s
 the doc size: 5068
 finish preProcess
-source window generation time: 0.001635s
-query window generation time: 0.001099s
-query cws size: 5068
+source window generation time: 0.073728s
+query window generation time: 0.05112s
+query cws size: 243264
 
 ./no_multiple_allign -src_path ./source_5000/ -query_file ./source_5000/source-document02582.txt -k 64 
 
-readfile time: 0.002937s
+readfile time: 0.002915s
 the doc size: 5068
 finish preProcess
-source window generation time: 0.0016s
-query window generation time: 0.001089s
-query cws size: 5068
+source window generation time: 0.101888s
+query window generation time: 0.068736s
+query cws size: 324352
 
 ./no_multiple_allign -src_path ./source_6000/ -query_file ./source_6000/source-document00712.txt -k 16 
 
-readfile time: 0.003846s
+readfile time: 0.003438s
 the doc size: 5912
 finish preProcess
-source window generation time: 0.001779s
-query window generation time: 0.001283s
-query cws size: 5912
+source window generation time: 0.027024s
+query window generation time: 0.020384s
+query cws size: 94592
 
 ./no_multiple_allign -src_path ./source_6000/ -query_file ./source_6000/source-document00712.txt -k 32 
 
-readfile time: 0.003477s
+readfile time: 0.003647s
 the doc size: 5912
 finish preProcess
-source window generation time: 0.00168s
-query window generation time: 0.001252s
-query cws size: 5912
+source window generation time: 0.058816s
+query window generation time: 0.043872s
+query cws size: 189184
 
 ./no_multiple_allign -src_path ./source_6000/ -query_file ./source_6000/source-document00712.txt -k 48 
 
-readfile time: 0.003414s
+readfile time: 0.003511s
 the doc size: 5912
 finish preProcess
-source window generation time: 0.001685s
-query window generation time: 0.001257s
-query cws size: 5912
+source window generation time: 0.08256s
+query window generation time: 0.06072s
+query cws size: 283776
 
 ./no_multiple_allign -src_path ./source_6000/ -query_file ./source_6000/source-document00712.txt -k 64 
 
-readfile time: 0.003445s
+readfile time: 0.00355s
 the doc size: 5912
 finish preProcess
-source window generation time: 0.00168s
-query window generation time: 0.001259s
-query cws size: 5912
+source window generation time: 0.11296s
+query window generation time: 0.081152s
+query cws size: 378368
 
