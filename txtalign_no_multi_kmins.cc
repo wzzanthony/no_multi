@@ -702,7 +702,7 @@ int main(int argc, char **argv)
     // indexing
     start = chrono::high_resolution_clock::now();
     //vector<vector<CompactWindow>> docs_cws(doc_num); //store compact windows of each document in the given folder    
-    vector<vector<CompactWindow>> docs_cws(doc_num);
+    vector<vector<CompositeWindow>> docs_cws(doc_num);
     for (int docid = 0; docid < doc_num; docid++)
     {
         cout << "the doc size: " << docs[docid].size() << endl;
@@ -713,7 +713,7 @@ int main(int argc, char **argv)
         int index_tree = 0;
         int time = 0;
         for (const auto &multi_word : multi_doc){
-            tree.findCWSAllign(multi_word, docs_cws[docid], docs[docid]);
+            tree.findCWSKmins(multi_word, docs_cws[docid], docs[docid]);
             //tree.findCWSAllign(multi_word, docs_cws[docid], docs[docid]);
         }
     }
@@ -732,7 +732,7 @@ int main(int argc, char **argv)
    
     vector<int> query;
     //vector<CompactWindow> query_cws;       //the compact window of the query text
-    vector<CompactWindow> query_cws;
+    vector<CompositeWindow> query_cws;
     word2int(query_file, query, word2id, id2word, id2maxfreq, id2mulId, stopWords);
     
     start = chrono::high_resolution_clock::now();  
@@ -741,7 +741,7 @@ int main(int argc, char **argv)
 	preProcess(query, query_multi_doc);
     Tree query_tree(query.size());
     for (const auto &query_multi_word : query_multi_doc)
-        query_tree.findCWSAllign(query_multi_word, query_cws, query);
+        query_tree.findCWSKmins(query_multi_word, query_cws, query);
         //query_tree.findCWSAllign(query_multi_word, query_cws, query);
 
     stop = chrono::high_resolution_clock::now();
