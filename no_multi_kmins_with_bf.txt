@@ -1,0 +1,185 @@
+./no_multiple_kmins -src_path ./source_500/ -query_file ./source_500/source-document03260.txt -k 16 
+
+readfile time: 0.001591s
+the doc size: 999
+finish preProcess
+source window generation time: 0.023819s
+query window generation time: 0.019291s
+query cws size: 14584
+
+before unique: 484620
+after unique: 14101
+./no_multiple_kmins -src_path ./source_500/ -query_file ./source_500/source-document03260.txt -k 32 
+
+readfile time: 0.001062s
+the doc size: 999
+finish preProcess
+source window generation time: 0.065816s
+query window generation time: 0.071327s
+query cws size: 26696
+
+before unique: 468996
+after unique: 26400
+./no_multiple_kmins -src_path ./source_500/ -query_file ./source_500/source-document03260.txt -k 48 
+
+readfile time: 0.001207s
+the doc size: 999
+finish preProcess
+source window generation time: 0.138052s
+query window generation time: 0.136882s
+query cws size: 36732
+
+before unique: 453628
+after unique: 37276
+./no_multiple_kmins -src_path ./source_500/ -query_file ./source_500/source-document03260.txt -k 64 
+
+readfile time: 0.001376s
+the doc size: 999
+finish preProcess
+source window generation time: 0.268487s
+query window generation time: 0.266494s
+query cws size: 45037
+
+before unique: 438516
+after unique: 46856
+./no_multiple_kmins -src_path ./source_1000/ -query_file ./source_1000/source-document02165.txt -k 16 
+
+readfile time: 0.001586s
+the doc size: 2340
+finish preProcess
+source window generation time: 0.048877s
+query window generation time: 0.047319s
+query cws size: 34578
+
+before unique: 2703975
+after unique: 31771
+./no_multiple_kmins -src_path ./source_1000/ -query_file ./source_1000/source-document02165.txt -k 32 
+
+readfile time: 0.001585s
+the doc size: 2340
+finish preProcess
+source window generation time: 0.168327s
+query window generation time: 0.166966s
+query cws size: 65522
+
+before unique: 2666895
+after unique: 62025
+./no_multiple_kmins -src_path ./source_1000/ -query_file ./source_1000/source-document02165.txt -k 48 
+
+readfile time: 0.001721s
+the doc size: 2340
+finish preProcess
+source window generation time: 0.365627s
+query window generation time: 0.362933s
+query cws size: 93395
+
+before unique: 2630071
+after unique: 90941
+./no_multiple_kmins -src_path ./source_1000/ -query_file ./source_1000/source-document02165.txt -k 64 
+
+readfile time: 0.001556s
+the doc size: 2340
+finish preProcess
+source window generation time: 0.693293s
+query window generation time: 0.693785s
+query cws size: 117403
+
+before unique: 2593503
+after unique: 118258
+./no_multiple_kmins -src_path ./source_2000/ -query_file ./source_2000/source-document01411.txt -k 16 
+
+readfile time: 0.002764s
+the doc size: 4058
+finish preProcess
+source window generation time: 0.084827s
+query window generation time: 0.086052s
+query cws size: 62339
+
+before unique: 8174946
+after unique: 56389
+./no_multiple_kmins -src_path ./source_2000/ -query_file ./source_2000/source-document01411.txt -k 32 
+
+readfile time: 0.001807s
+the doc size: 4058
+finish preProcess
+source window generation time: 0.308255s
+query window generation time: 0.306196s
+query cws size: 118549
+
+before unique: 8110378
+after unique: 110914
+./no_multiple_kmins -src_path ./source_2000/ -query_file ./source_2000/source-document01411.txt -k 48 
+
+readfile time: 0.002376s
+the doc size: 4058
+finish preProcess
+source window generation time: 0.67984s
+query window generation time: 0.679952s
+query cws size: 171550
+
+before unique: 8046066
+after unique: 163995
+./no_multiple_kmins -src_path ./source_2000/ -query_file ./source_2000/source-document01411.txt -k 64 
+
+readfile time: 0.002331s
+the doc size: 4058
+finish preProcess
+source window generation time: 1.34317s
+query window generation time: 1.32115s
+query cws size: 221102
+
+before unique: 7982010
+after unique: 215597
+./no_multiple_kmins -src_path ./source_3000/ -query_file ./source_3000/source-document03082.txt -k 16 
+
+readfile time: 0.002823s
+the doc size: 5123
+finish preProcess
+source window generation time: 0.105555s
+query window generation time: 0.104427s
+query cws size: 79771
+
+before unique: 13048386
+after unique: 76189
+./no_multiple_kmins -src_path ./source_3000/ -query_file ./source_3000/source-document03082.txt -k 32 
+
+readfile time: 0.003001s
+the doc size: 5123
+finish preProcess
+source window generation time: 0.378951s
+query window generation time: 0.374698s
+query cws size: 155030
+
+before unique: 12966778
+after unique: 149838
+./no_multiple_kmins -src_path ./source_3000/ -query_file ./source_3000/source-document03082.txt -k 48 
+
+readfile time: 0.002561s
+the doc size: 5123
+finish preProcess
+source window generation time: 0.836912s
+query window generation time: 0.830596s
+query cws size: 226052
+
+before unique: 12885426
+after unique: 221423
+./no_multiple_kmins -src_path ./source_3000/ -query_file ./source_3000/source-document03082.txt -k 64 
+
+readfile time: 0.002305s
+the doc size: 5123
+finish preProcess
+source window generation time: 1.51977s
+query window generation time: 1.51509s
+query cws size: 293417
+
+before unique: 12804330
+after unique: 291256
+./no_multiple_kmins -src_path ./source_4000/ -query_file ./source_4000/source-document01786.txt -k 16 
+
+readfile time: 0.003603s
+the doc size: 7289
+finish preProcess
+source window generation time: 0.151302s
+query window generation time: 0.148588s
+query cws size: 113518
+
