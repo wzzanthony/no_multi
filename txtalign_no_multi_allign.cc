@@ -158,8 +158,10 @@ public:
         TAIL = ((int)nodes.size()) - 1;
         nodes[HEAD].next = TAIL;
         nodes[HEAD].word_pos = -1;
+        nodes[HEAD].hash_value = -1;
         nodes[TAIL].prev = HEAD;
         nodes[TAIL].word_pos = leafNum;
+        nodes[TAIL].hash_value = leafNum;
     }
 
     void buildTree(int leafNum)
@@ -327,6 +329,68 @@ public:
         }
         return tree_node;
     }
+    void findCWSAllign(const MultiWord &multi_word, vector<CompactWindow> &res_cws, const vector<int> &doc){
+        int hv = multi_word.hash;
+        int position = multi_word.pos;
+        int tree_node = UpdateChain(position);
+        nodes[tree_node].hash_value = hv;
+        //find from its left
+        int node = nodes[tree_node].prev;
+        int left = nodes[node].word_pos + 1;
+        node = nodes[tree_node].next;
+        int right = nodes[node].word_pos - 1;
+        res_cws.emplace_back(hv, position, left, right);
+    }
+
+    void findCWSKmins(const MultiWord &multi_word, vector<CompositeWindow> &res_cws, const vector<int> &doc){
+        int hv = multi_word.hash;
+        int pos = multi_word.pos;
+        int tree_node = UpdateChain(multi_word.pos);
+        vector<int> positions;
+        vector<int> hash_values;
+        hash_values.push_back(multi_word.hash);
+        positions.push_back(multi_word.pos);
+        int count = 0;
+        int node = nodes[tree_node].prev;
+        //count from left
+        while (count < K){
+            hash_values.push_back(nodes[node].hash_value);
+            positions.push_back(nodes[node].word_pos);
+            count += 1;
+            if (nodes[node].word_pos == -1)
+                break;
+            node = nodes[node].prev;
+        }
+        reverse(hash_values.begin(), hash_values.end());
+        reverse(positions.begin(), positions.end());
+        count = 0;
+        node = nodes[tree_node].next;
+        while (count < K){
+            hash_values.push_back(nodes[node].hash_value);
+            positions.push_back(nodes[node].word_pos);
+            count += 1;
+            if (nodes[node].word_pos == leafNum)
+                break;
+            node = nodes[node].next;
+        }
+        if (hash_values.size() < K + 2)
+            return;
+        for (int x = 0; x < hash_values.size() - K - 1; x++){
+            int left_l = positions[x]+1;
+            int left_r = positions[x+1];
+            int right_l = positions[x+K];
+            int right_r = positions[x+K+1] - 1;
+            vector<int>::const_iterator start = hash_values.begin() + x + 1;
+            vector<int>::const_iterator end = hash_values.begin() + x + K + 1;
+            vector<int> sub_hash_values =  hash_values(start, end);
+            res_cws.emplace_back(sub_hash_values);
+            res_cws.back().left.l = left_l;
+            res_cws.back().left.r = left_r;
+            res_cws.back().right.l = right_l;
+            res_cws.back().right.r = right_r;
+        }
+    }
+    /*
     void findCWSAllign(const MultiWord &multi_word, vector<CompactWindow> &res_cws, const vector<int> &doc)
     {
         int hv = multi_word.hash;
@@ -425,6 +489,7 @@ public:
             //cout << "-------------------------------_________" << endl;
         }
     }
+    */
 };
 void preProcess(const vector<int> &doc, vector<MultiWord> &multi_doc)
 {

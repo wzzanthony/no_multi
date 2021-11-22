@@ -158,8 +158,10 @@ public:
         TAIL = ((int)nodes.size()) - 1;
         nodes[HEAD].next = TAIL;
         nodes[HEAD].word_pos = -1;
+        nodes[HEAD].hash_value = -1;
         nodes[TAIL].prev = HEAD;
         nodes[TAIL].word_pos = leafNum;
+        nodes[TAIL].hash_value = leafNum;
     }
 
     void buildTree(int leafNum)
@@ -327,6 +329,68 @@ public:
         }
         return tree_node;
     }
+    void findCWSAllign(const MultiWord &multi_word, vector<CompactWindow> &res_cws, const vector<int> &doc){
+        int hv = multi_word.hash;
+        int position = multi_word.pos;
+        int tree_node = UpdateChain(position);
+        nodes[tree_node].hash_value = hv;
+        //find from its left
+        int node = nodes[tree_node].prev;
+        int left = nodes[node].word_pos + 1;
+        node = nodes[tree_node].next;
+        int right = nodes[node].word_pos - 1;
+        res_cws.emplace_back(hv, position, left, right);
+    }
+
+    void findCWSKmins(const MultiWord &multi_word, vector<CompositeWindow> &res_cws, const vector<int> &doc){
+        int hv = multi_word.hash;
+        int pos = multi_word.pos;
+        int tree_node = UpdateChain(multi_word.pos);
+        vector<int> positions;
+        vector<int> hash_values;
+        hash_values.push_back(multi_word.hash);
+        positions.push_back(multi_word.pos);
+        int count = 0;
+        int node = nodes[tree_node].prev;
+        //count from left
+        while (count < K){
+            hash_values.push_back(nodes[node].hash_value);
+            positions.push_back(nodes[node].word_pos);
+            count += 1;
+            if (nodes[node].word_pos == -1)
+                break;
+            node = nodes[node].prev;
+        }
+        reverse(hash_values.begin(), hash_values.end());
+        reverse(positions.begin(), positions.end());
+        count = 0;
+        node = nodes[tree_node].next;
+        while (count < K){
+            hash_values.push_back(nodes[node].hash_value);
+            positions.push_back(nodes[node].word_pos);
+            count += 1;
+            if (nodes[node].word_pos == leafNum)
+                break;
+            node = nodes[node].next;
+        }
+        if (hash_values.size() < K + 2)
+            return;
+        for (int x = 0; x < hash_values.size() - K - 1; x++){
+            int left_l = positions[x]+1;
+            int left_r = positions[x+1];
+            int right_l = positions[x+K];
+            int right_r = positions[x+K+1] - 1;
+            vector<int>::const_iterator start = hash_values.begin() + x + 1;
+            vector<int>::const_iterator end = hash_values.begin() + x + K + 1;
+            vector<int> sub_hash_values(start, end);
+            res_cws.emplace_back(sub_hash_values);
+            res_cws.back().left.l = left_l;
+            res_cws.back().left.r = left_r;
+            res_cws.back().right.l = right_l;
+            res_cws.back().right.r = right_r;
+        }
+    }
+    /*
     void findCWSAllign(const MultiWord &multi_word, vector<CompactWindow> &res_cws, const vector<int> &doc)
     {
         int hv = multi_word.hash;
@@ -425,6 +489,7 @@ public:
             //cout << "-------------------------------_________" << endl;
         }
     }
+    */
 };
 void preProcess(const vector<int> &doc, vector<MultiWord> &multi_doc)
 {
@@ -651,6 +716,7 @@ int main(int argc, char **argv)
     K = 16;
     int doc_number = -1;
     tau = 16;
+    int method = 0; //0 represents allgin, 1 represents txtalign
     for (int i = 0; i < argc; i++)
     {
         string arg = argv[i];
@@ -668,6 +734,8 @@ int main(int argc, char **argv)
             doc_number = atoi(argv[i + 1]);
         if  (arg == "-tau")
             tau = atoi(argv[i+1]);
+        if  (arg == "-method")
+            method = atoi(argv[i+1]);
     }
     //0. generate hash functions
     generateHashFunc(1111, ab);
@@ -702,7 +770,8 @@ int main(int argc, char **argv)
     // indexing
     start = chrono::high_resolution_clock::now();
     //vector<vector<CompactWindow>> docs_cws(doc_num); //store compact windows of each document in the given folder    
-    vector<vector<CompositeWindow>> docs_cws(doc_num);
+    vector<vector<CompactWindow>> docs_cws_allign(doc_num);
+    vector<vector<CompositeWindow>> docs_cws_txtalign(doc_num);
     for (int docid = 0; docid < doc_num; docid++)
     {
         cout << "the doc size: " << docs[docid].size() << endl;
@@ -710,48 +779,58 @@ int main(int argc, char **argv)
 	    preProcess(docs[docid], multi_doc);
         cout <<"finish preProcess" << endl;
         Tree tree(docs[docid].size());
-        int index_tree = 0;
-        int time = 0;
         for (const auto &multi_word : multi_doc){
-            tree.findCWSKmins(multi_word, docs_cws[docid], docs[docid]);
-            //tree.findCWSAllign(multi_word, docs_cws[docid], docs[docid]);
+            if (method == 0){
+                tree.findCWSAllign(multi_word, docs_cws_allign[docid], docs[docid]);
+            }else if (method == 1){
+                tree.findCWSKmins(multi_word, docs_cws_txtalign[docid], docs[docid]);
+            }else{
+                cout << "wrong parameter for method" << endl;
+                return 0;
+            }
         }
     }
 
     stop = chrono::high_resolution_clock::now();
     duration = chrono::duration_cast<chrono::microseconds>(stop - start);
-    cout << "source window generation time: " << duration.count() / 1000000.0 << "s" << endl;
-    
+    if (method == 0){
+        cout << "source window generation time: " << K * duration.count() / 1000000.0 << "s" << endl;
+    }else{
+        cout << "source window generation time: " << duration.count() / 1000000.0 << "s" << endl;
+    }
+
     // build the prefix filter index
     start = chrono::high_resolution_clock::now(); 
     
-    vector<vector<int>> bottomks;
-    vector<vector<pair<int, int>>> bottomk_of_cws;
-    unordered_map<uint64_t, int> hash2vec;
-    unordered_map<int, vector<pair<int,int>>> prefixes; //just to finish the compile 
    
     vector<int> query;
     //vector<CompactWindow> query_cws;       //the compact window of the query text
-    vector<CompositeWindow> query_cws;
+    vector<CompactWindow> query_cws_allign;
+    vector<CompositeWindow> query_cws_txtalign;
     word2int(query_file, query, word2id, id2word, id2maxfreq, id2mulId, stopWords);
     
-    start = chrono::high_resolution_clock::now();  
+    start = chrono::high_resolution_clock::now();
 
     vector<MultiWord> query_multi_doc; //(hash_value, pos, left, right)
 	preProcess(query, query_multi_doc);
     Tree query_tree(query.size());
-    for (const auto &query_multi_word : query_multi_doc)
-        query_tree.findCWSKmins(query_multi_word, query_cws, query);
-        //query_tree.findCWSAllign(query_multi_word, query_cws, query);
-
+    for (const auto &query_multi_word : query_multi_doc){
+        if (method == 0){
+            query_tree.findCWSAllign(query_multi_word, query_cws_allign, query);
+        }else{
+            query_tree.findCWSKmins(query_multi_word, query_cws_txtalign, query);
+        }
+    }
     stop = chrono::high_resolution_clock::now();
     duration = chrono::duration_cast<chrono::microseconds>(stop - start);
-    cout << "query window generation time: " << duration.count() / 1000000.0 << "s" << endl;
-    cout << "query cws size: " << query_cws.size() << endl;
+    if (method == 0){
+        cout << "query window generation time: " << K * duration.count() / 1000000.0 << "s" << endl;
+        cout << "query cws size: " << K * query_cws_allign.size() << endl;
+    }else{
+        cout << "query window generation time: " << duration.count() / 1000000.0 << "s" << endl;
+        cout << "query cws size: " << query_cws_txtalign.size() << endl;
+    }
     cout << endl;
 
-    unordered_map<uint64_t, pair<int, int>> gt;
-    bf(docs[0], gt);
     return 0;
-   
 }
